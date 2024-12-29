@@ -30,7 +30,7 @@ export default function Verify(){
     }, [userId, secret]);
 
     return (
-        <div className="text-center mt-10 text-white text-lg">
+        <div className="text-center mt-10 text-black text-lg">
             {error && <p className="text-red-400 text-lg">{error}</p>}
             <h1 className="text-2xl font-bold">Email Verification</h1>
             <p>Verifying your email...</p>

@@ -56,7 +56,7 @@ export class Auth {
     // Send verification email
     async sendVerificationEmail() {
         try {
-            const result = await this.account.createVerification("http://localhost:5173/Verify");
+            const result = await this.account.createVerification("https://nootes-rho.vercel.app/Verify");
             console.log("Verification email sent:", result);
             return result;
         } catch (error) {
