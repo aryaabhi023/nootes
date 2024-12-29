@@ -10,7 +10,7 @@ export default function VerifyRoom() {
   const [key,setKey]=useState("");
   const { id } = useParams();
   const navigate = useNavigate();
-  const roomInfo=JSON.parse(localStorage.getItem('RoomInfo')).split(';');
+  const roomInfo=JSON.parse(localStorage.getItem('RoomInfo'))?.split(';');
 
   let date=new DateObject();
 
