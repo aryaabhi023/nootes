@@ -16,7 +16,6 @@ const Login = () => {
   });
 
   const loggedIn = useSelector((state) => state.auth.status);
-  console.log(loggedIn);
   if (loggedIn) {
     return <Navigate to="/Home" replace />;
   }

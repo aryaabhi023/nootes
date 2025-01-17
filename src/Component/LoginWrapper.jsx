@@ -7,9 +7,6 @@ export default function LoginWrapper({ children }) {
   let loggedIn = useSelector((state) => state.auth.status);
   const dispatch = useDispatch();
 
-  const pathname = window.location.pathname;
-  console.log(pathname);
-
   if (!loggedIn) {
     auth.getCurrentUser().then((user) => {
       if (user) {

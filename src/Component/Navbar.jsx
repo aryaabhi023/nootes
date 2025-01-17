@@ -1,8 +1,5 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import auth from "../Appwrite/auth";
-import { login as authlogin } from "../Store/authSlice";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const avtar = useSelector((state) => state.auth.avtar);

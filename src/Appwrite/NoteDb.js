@@ -45,7 +45,22 @@ export class NoteDb {
             return false;
         }
     }
+
+    async deleteNote(noteId){
+        try {
+            await this.databases.deleteDocument(
+                conf.appwrite_databaseId,
+                conf.appwrite_collectionId2,
+                noteId
+            );
+            return true;
+        } catch (error) {
+            console.log("Appwrite service :: deleteNote :: error", error);
+            return false;
+        }
+    }
 }
+
 
 const notedb= new NoteDb();
 export default notedb;

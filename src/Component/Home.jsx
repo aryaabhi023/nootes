@@ -29,7 +29,6 @@ export default function Home() {
 
   useEffect(() => {
     roomdb.getRoomsByName(RoomName).then((response) => {
-      console.log(response);
       setRooms(response.documents);
     });
   }, []);
