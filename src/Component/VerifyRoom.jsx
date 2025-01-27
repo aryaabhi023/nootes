@@ -3,14 +3,18 @@ import DateObject from "react-date-object";
 import { useParams, useNavigate } from "react-router-dom";
 import Button2 from "../SharedComponent/Button2";
 import roomdb from "../Appwrite/RoomDb";
+import { useSelector } from "react-redux";
 
 export default function VerifyRoom() {
+  
   const [room, setRoom] = useState(null);
   const [error, setError] = useState(null);
   const [key,setKey]=useState("");
   const { id } = useParams();
   const navigate = useNavigate();
   const roomInfo=JSON.parse(localStorage.getItem('RoomInfo'))?.split(';');
+
+  const userInfo=useSelector((state)=>state.auth.user);
 
   let date=new DateObject();
 
@@ -27,6 +31,7 @@ export default function VerifyRoom() {
 
   useEffect(() => {
     roomdb.getRoom({ RoomId: id }).then((res) => {
+      console.log(res);
       setRoom(res);
       if(roomInfo[0]==id && roomInfo[1]==date.format('DD-MM-YYYY')){
         navigate(`/Room/${id}`);
@@ -34,11 +39,22 @@ export default function VerifyRoom() {
     });
   }, []);
 
+
+  const handleDelete=()=>{
+    roomdb.deleteRoom(id).then((res) => {
+      console.log(res);
+      navigate("/Home");
+    });
+  }
+
   return (
     <div className="h-screen bg-[#e8e8e8]">
       <div
-        className="flex justify-center items-center pt-10"
+        className="flex flex-col justify-center items-center pt-10"
       >
+        <div>
+          {userInfo?.name===room?.UserName && <button className="bg-red-500 px-2 py-1 rounded my-2" onClick={handleDelete}>Delete</button>}
+        </div>
         <form className="flex flex-col items-center justify-center pt-4 border-2 border-gray-300 bg-gray-900 rounded-2xl md:w-1/3 w-5/6 p-4"
             onSubmit={handleSubmit}
         >

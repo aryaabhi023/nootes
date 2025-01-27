@@ -124,36 +124,7 @@ const StyledWrapper = styled.div`
   .terminal_bling {
     color: #dddddd;
   }
-
-  .terminal_cursor {
-    display: block;
-    height: 14px;
-    width: 5px;
-    margin-left: 10px;
-    animation: curbl 1200ms linear infinite;
-  }
-
-  @keyframes curbl {
-
-    0% {
-      background: #ffffff;
-    }
-
-    49% {
-      background: #ffffff;
-    }
-
-    60% {
-      background: transparent;
-    }
-
-    99% {
-      background: transparent;
-    }
-
-    100% {
-      background: #ffffff;
-    }
+    
   }`;
 
 export default Card;

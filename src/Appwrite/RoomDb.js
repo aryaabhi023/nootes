@@ -53,7 +53,7 @@ export class RoomDb {
                 ]
             );
         } catch (error) {
-            console.log("Appwrite service :: getRoom :: error", error);
+            console.log("Appwrite service :: getRoomsByUsername :: error", error);
             return false;
         }
     }
@@ -70,7 +70,7 @@ export class RoomDb {
                 filters
             );
         } catch (error) {
-            console.log("Appwrite service :: getRoom :: error", error);
+            console.log("Appwrite service :: getRooms :: error", error);
             return false;
         }
     }
@@ -84,6 +84,20 @@ export class RoomDb {
             );
         } catch (error) {
             console.log("Appwrite service :: getRoom :: error", error);
+            return false;
+        }
+    }
+
+    async deleteRoom(RoomId){
+        try {
+            await this.databases.deleteDocument(
+                conf.appwrite_databaseId,
+                conf.appwrite_collectionId,
+                RoomId
+            );
+            return true;
+        } catch (error) {
+            console.log("Appwrite service :: deleteRoom :: error", error);
             return false;
         }
     }
